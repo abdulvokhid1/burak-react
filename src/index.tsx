@@ -7,7 +7,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@mui/material/styles';
 import './css/index.css';
 import App from './app/App';
-import theme from './theme';
+import theme from './app/MaterialTheme';
 
 
 ReactDOM.render(
