@@ -25,9 +25,11 @@ return (
             <Box className = "category-title">Fresh Menu</Box>
             <Stack className="cards-frame">
                 <CssVarsProvider>
-             {newDishes.map((ele, index) => {
-                return(
-                    <Card key={index} variant="outlined" className = "card">
+                    {newDishes.length !== 0 ? (
+
+                        newDishes.map((ele, index) => {
+                            return(
+                                <Card key={index} variant="outlined" className = "card">
                         <CardOverflow>
                             <div className="product-sale">Normal Size</div>
                             <AspectRatio ratio="1">
@@ -52,9 +54,12 @@ return (
                             </Stack>
                         </CardOverflow>
                     </Card>
+                        );
+                    })
+                      )   : (
+<Box className = "no-data"> New products are not available! </Box>
+                        )}
             
-                    )
-                })}
                 </CssVarsProvider>
             </Stack>
         </Stack>
