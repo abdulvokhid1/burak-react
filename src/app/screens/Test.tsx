@@ -15,7 +15,7 @@ class Test extends Component {
       };
     }
     changeColor = () => {
-      this.setState({color: "blue"});
+      this.setState({color: "blue", model: "Ferrari"});
     }
 
 
