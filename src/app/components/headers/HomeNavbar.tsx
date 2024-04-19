@@ -74,7 +74,7 @@ export default function HomeNavbar() {
                     
                 </Box>
                 </Stack>
-                <Box className="logo-frame">
+                <Box className="logo-frame">    
                     <div className="logo-img"></div>
                 </Box>
             </Stack>
