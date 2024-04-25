@@ -21,6 +21,8 @@ import {RemoveRedEye} from "@mui/icons-material";
 
 
 export default function Products(){
+
+    
     return(
         <div className="products">
             <Container>
