@@ -12,7 +12,7 @@ import "../../../css/products.css"
         <ChosenProducts/>
       </Route>
       <Route path={`${products.path}`}>
-        <Products/>
+        <Products/> 
       </Route>
      </Switch>
     </div>

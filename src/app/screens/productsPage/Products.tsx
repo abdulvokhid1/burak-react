@@ -6,7 +6,19 @@ import  ArrowBackIcon  from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import SearchBar from "../../components/search";
 import {RemoveRedEye} from "@mui/icons-material";
+import { Dispatch, createSelector } from "@reduxjs/toolkit";
+import { Product } from "../../../lib/types/product";
+import { Member } from "../../../lib/types/member";
+import { setProducts } from "./slice";
+import { retrieveProducts } from "./selector";
 
+/** REDUX SLICE & SELECTOR **/
+const actionDispatch = (dispatch: Dispatch) => ({
+    setProducts: (data: Product[]) => dispatch(setProducts(data))
+  });
+const productsRetriever = createSelector(retrieveProducts, (products) => ({
+    products
+}))
  const products = [
     {prooductName: "Cutlet", imgPath:"/img/cutlet.webp"},
     {prooductName: "Kebab", imgPath:"/img/kebab-fresh.webp"},
