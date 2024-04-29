@@ -11,9 +11,13 @@ import { serverApi } from "../../../lib/config";
 
 interface BasketProps {
   cartItems: CartItem[];
+  onAdd : (item:CartItem) => void;
+  onRemove : (item:CartItem) => void;
+  onDelete : (item:CartItem) => void;
+  onDeleteAll : () => void;
 }
-export default function Basket(props:BasketProps) {
-  const {cartItems} = props;
+export default function  Basket(props:BasketProps) {
+  const {cartItems, onAdd, onRemove, onDelete,onDeleteAll} = props;
   const authMember = null;
   const history = useHistory();
 
@@ -89,15 +93,19 @@ export default function Basket(props:BasketProps) {
                 return (
                   <Box className={"basket-info-box"}>
                 <div className={"cancel-btn"}>
-                  <CancelIcon color={"primary"} />
+                  <CancelIcon color={"primary"} onClick={()=> onDelete(item)} />
                 </div>
                 <img src={imagePath} className={"product-img"} />
                 <span className={"product-name"}>{item.name}</span>
                 <p className={"product-price"}>${item.price} x {item.quantity}</p>
                 <Box sx={{ minWidth: 120 }}>
                   <div className="col-2">
-                    <button className="remove">-</button>{" "}
-                    <button className="add">+</button>
+                    <button className="remove" onClick={() => {
+                      onRemove(item)
+                    }}>-</button>{" "}
+                    <button className="add" onClick={()=>{
+                      onAdd(item)
+                    }}>+</button>
                   </div>
                 </Box>
               </Box>
