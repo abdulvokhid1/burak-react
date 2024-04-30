@@ -20,7 +20,7 @@ function App() {
   const location = useLocation();
   const {cartItems, onAdd, onDelete, onDeleteAll, onRemove} = useBasket();
   const [signupOpen, setSignupOpen]= useState<boolean>(false);
-  const [loginOpen, setLoginOpen]= useState<boolean>(true);
+  const [loginOpen, setLoginOpen]= useState<boolean>(false);
 
 /** HANDLERS */
 const handleSignUpCLose = () => setSignupOpen(false);
@@ -33,6 +33,8 @@ const handleLoginClose = () => setLoginOpen(false);
     onRemove = {onRemove}
     onDelete = {onDelete}
     onDeleteAll={onDeleteAll}
+    setSignupOpen = {setSignupOpen}
+    setLoginOpen = {setLoginOpen}
      /> :
       <OtherNavbar
        cartItems = {cartItems}
@@ -40,6 +42,8 @@ const handleLoginClose = () => setLoginOpen(false);
        onRemove = {onRemove}
        onDelete = {onDelete}
        onDeleteAll = {onDeleteAll}
+       setSignupOpen = {setSignupOpen}
+       setLoginOpen = {setLoginOpen}
        />} 
       <Switch> 
         <Route path="/products">
