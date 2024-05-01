@@ -7,15 +7,25 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 import PausedOrders from "./PausedOrders";
 import ProcessOrders from "./ProcessOrders";
 import FinishedOrders from "./FinishedOrders";
-import "../../../css/order.css"
+import "../../../css/order.css";
+import { setFinishedOrders, setPausedOrders, setProcessOrders } from "./slice";
+import { Order } from "../../../lib/types/order";
+import { useDispatch } from "react-redux";
+import { Dispatch } from "@reduxjs/toolkit";
 
-
+/** REDUX SLICE & SELECTOR **/
+const actionDispatch = (dispatch: Dispatch) => ({
+  setPausedOrders: (data: Order[]) => dispatch(setPausedOrders(data)),
+  setProcessOrders: (data: Order[]) => dispatch(setProcessOrders(data)),
+  setFinishedOrders: (data: Order[]) => dispatch(setFinishedOrders(data)),
+});
 export default function OrdersPage() {
   const [value, setValue] = useState("1");
+  actionDispatch(useDispatch);
 
   const handleChange = (e: SyntheticEvent, newValue: string) => {
-    setValue(newValue)
-  }
+    setValue(newValue);
+  };
 
   return (
     <div className={"order-page"}>
@@ -44,12 +54,11 @@ export default function OrdersPage() {
           </TabContext>
         </Stack>
 
-        
         <Stack className={"order-right"}>
-        <Box className={"order-info-box"}>
+          <Box className={"order-info-box"}>
             <Box className={"member-box"}>
               <div className={"order-user-img"}>
-                <img 
+                <img
                   src={"/icons/default-user.svg"}
                   className={"order-user-avatar"}
                   alt=""
@@ -62,21 +71,15 @@ export default function OrdersPage() {
                   />
                 </div>
               </div>
-              <span className={"order-user-name"}>
-                Justin
-              </span>
-              <span className={"order-user-prof"}>
-                User
-              </span>
+              <span className={"order-user-name"}>Justin</span>
+              <span className={"order-user-prof"}>User</span>
             </Box>
             <Box className={"liner"}></Box>
             <Box className={"order-user-address"}>
               <div style={{ display: "flex" }}>
                 <LocationOnIcon />
               </div>
-              <div className={"spec-address-txt"}>
-                South Korea, Busan
-              </div>
+              <div className={"spec-address-txt"}>South Korea, Busan</div>
             </Box>
           </Box>
           <Box className={"order-info-box"}>
@@ -122,5 +125,5 @@ export default function OrdersPage() {
         </Stack>
       </Container>
     </div>
-  )
+  );
 }
