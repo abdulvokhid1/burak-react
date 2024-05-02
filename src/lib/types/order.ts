@@ -25,10 +25,10 @@ export interface Order {
 }
 
 export interface OrderItemInput {
-  reduce(
-    arg0: (accumulator: number, item: OrderItemInput) => number,
-    arg1: number
-  ): unknown;
+  // reduce(
+  //   arg0: (accumulator: number, item: OrderItemInput) => number,
+  //   arg1: number
+  // ): unknown;
   itemQuantity: number;
   itemPrice: number;
   productId: string;
