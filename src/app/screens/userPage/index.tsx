@@ -75,8 +75,8 @@ export default function UserPage() {
                 <YouTubeIcon />
               </Box>
               <p className={"user-desc"}>
-                {authMember?.memberDesk
-                  ? authMember.memberDesk
+                {authMember?.memberDesc
+                  ? authMember.memberDesc
                   : "no description"}
               </p>
             </Box>

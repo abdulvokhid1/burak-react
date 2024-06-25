@@ -26,7 +26,7 @@ export function Settings() {
       memberNick: authMember?.memberNick,
       memberPhone: authMember?.memberPhone,
       memberAddress: authMember?.memberAddress,
-      memberDesk: authMember?.memberDesk,
+      memberDesc: authMember?.memberDesc,
       memberImage: authMember?.memberImage,
     }
   );
@@ -49,7 +49,7 @@ export function Settings() {
   };
 
   const memberDescriptionHandler = (e: T) => {
-    memberUpdateInput.memberDesk = e.target.value;
+    memberUpdateInput.memberDesc = e.target.value;
     setMemberUpdateInput({ ...memberUpdateInput });
   };
 
@@ -60,7 +60,7 @@ export function Settings() {
         memberUpdateInput.memberNick === "" ||
         memberUpdateInput.memberPhone === "" ||
         memberUpdateInput.memberAddress === "" ||
-        memberUpdateInput.memberDesk === ""
+        memberUpdateInput.memberDesc === ""
       ) {
         throw new Error(Messages.error3);
       }
@@ -153,9 +153,9 @@ export function Settings() {
           <textarea
             className={"spec-textarea mb-description"}
             placeholder={
-              authMember?.memberDesk ? authMember.memberDesk : "no description"
+              authMember?.memberDesc ? authMember.memberDesc : "no description"
             }
-            value={memberUpdateInput.memberDesk}
+            value={memberUpdateInput.memberDesc}
             name="memberDesc"
             onChange={memberDescriptionHandler}
           />
