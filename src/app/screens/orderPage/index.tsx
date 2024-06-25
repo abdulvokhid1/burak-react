@@ -15,6 +15,7 @@ import { Dispatch } from "@reduxjs/toolkit";
 import { OrderStatus } from "../../../lib/enums/order.enum";
 import OrderService from "../../services/OrderService";
 import { useGlobals } from "../../hooks/useGlobals";
+import { useHistory } from "react-router-dom";
 
 /** REDUX SLICE & SELECTOR **/
 const actionDispatch = (dispatch: Dispatch) => ({
@@ -24,6 +25,8 @@ const actionDispatch = (dispatch: Dispatch) => ({
 });
 
 export default function OrdersPage() {
+  const history = useHistory();
+  const { authMember } = useGlobals();
   const { setPausedOrders, setProcessOrders, setFinishedOrders } =
     actionDispatch(useDispatch());
   const { orderBuilder } = useGlobals();
@@ -33,10 +36,6 @@ export default function OrdersPage() {
     limit: 5,
     orderStatus: OrderStatus.PAUSE,
   });
-
-  const handleChange = (e: SyntheticEvent, newValue: string) => {
-    setValue(newValue);
-  };
 
   useEffect(() => {
     const order = new OrderService();
@@ -56,6 +55,12 @@ export default function OrdersPage() {
       .then((data) => setFinishedOrders(data))
       .catch((err) => console.log(err));
   }, [orderInquiry, orderBuilder]);
+
+  /** HANDLERS **/
+  const handleChange = (e: SyntheticEvent, newValue: string) => {
+    setValue(newValue);
+  };
+  if (!authMember) history.push("/");
   return (
     <div className={"order-page"}>
       <Container className="order-container">
